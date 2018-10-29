@@ -275,53 +275,23 @@ and open the template in the editor.
                else if(scrollTop == 0)
                    $(".topSection .navbar").removeClass("scrollNav").removeClass('navbar2');
                
-               if(scrollTop < 1000)
+              /*if(scrollTop < 1000)
                    $("#toTop").addClass('d-none');
                else
-                   $("#toTop").removeClass('d-none');
+                   $("#toTop").removeClass('d-none');*/
             });
             
-            /*$( "#toTop" ).click(function() {
-                $( 'body', 'html' ).animate({
-                  scrollTop: 0
-                }, 5000);
-          });*/
-             
-            $("#toTop")
-                  // Remove links that don't actually link to anything
-                  .not('[href="#"]')
-                  .not('[href="#0"]')
-                  .click(function(event) {
-                    // On-page links
-                    if (
-                      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-                      && 
-                      location.hostname == this.hostname
-                    ) {
-                      // Figure out element to scroll to
-                      var target = $(this.hash);
-                      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                      // Does a scroll target exist?
-                      if (target.length) {
-                        // Only prevent default if animation is actually gonna happen
-                        event.preventDefault();
-                        $('html, body').animate({
-                          scrollTop: target.offset().top
-                        }, 1000, function() {
-                          // Callback after animation
-                          // Must change focus!
-                          var $target = $(target);
-                          $target.focus();
-                          if ($target.is(":focus")) { // Checking if the target was focused
-                            return false;
-                          } else {
-                            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-                            $target.focus(); // Set focus again
-                          };
-                        });
-                      }
-                    }
-                  });
+            $(window).scroll(function(){
+            if ($(this).scrollTop() > 1000) {
+                $('#toTop').fadeIn('slow');
+            } else {
+                $('#toTop').fadeOut('slow');
+            }
+        });
+        $( "#toTop" ).click(function() {
+             $("html, body").animate({ scrollTop: 0 }, 800);
+            return false;
+          });   
         });
     </script>
 </html>
